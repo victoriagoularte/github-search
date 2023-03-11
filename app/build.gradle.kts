@@ -74,6 +74,8 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.bundles.hilt)
 
+    implementation(libs.material)
+
     with(libs.androidx) {
         implementation(appcompat)
         implementation(constraintlayout)
