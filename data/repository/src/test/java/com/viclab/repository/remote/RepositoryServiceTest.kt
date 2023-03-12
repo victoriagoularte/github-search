@@ -5,10 +5,7 @@ import com.viclab.core.test.extension.startOn
 import com.viclab.core.test.extension.with
 import com.viclab.core.test.mockwebserver.MockWebServerTestRule
 import com.viclab.repository.MockResponse
-import com.viclab.repository.model.response.RepositoryListResponse
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import okhttp3.Response
 import org.junit.Rule
 import org.junit.Test
 import kotlin.test.assertEquals
