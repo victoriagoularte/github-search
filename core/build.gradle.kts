@@ -15,6 +15,7 @@ secrets {
 
 dependencies {
     implementation(libs.bundles.network)
+    implementation(libs.mockwebserver)
 
     with(libs.androidx) {
         implementation(core.ktx)

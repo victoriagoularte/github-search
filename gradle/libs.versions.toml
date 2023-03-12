@@ -29,6 +29,10 @@ retrofitVersion = "2.9.0"
 logInterceptorVersion = "4.10.0"
 secrets = "2.0.1"
 materialVersion = "1.5.0"
+mockwebserverVersion = "4.9.1"
+turbine = "0.12.1"
+coroutinesTest = "1.5.1"
+mockkVersion = "1.11.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name="activity-compose", version.ref = "androidxActivityCompose"}
@@ -72,7 +76,11 @@ junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logInterceptorVersion" }
-material = { group="com.google.android.material", name="material", version.ref = "materialVersion"}
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockwebserverVersion" }
+material = { group = "com.google.android.material", name="material", version.ref = "materialVersion"}
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+coroutinesTest = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest"}
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockkVersion"}
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -85,6 +93,7 @@ compose = ["androidx-compose-bom", "androidx-compose-foundation", "androidx-comp
 hilt = ["hilt-android", "hilt-android-testing", "hilt-compiler", "hilt-ext-compiler", "hilt-ext-work",
     "androidx-hilt-navigation-compose"]
 network = ["retrofit", "retrofit-converter-gson", "logging-interceptor"]
+test = ["junit4", "turbine", "coroutinesTest", "mockk", "mockwebserver"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": 3432266,
+      "node_id": "MDEwOlJlcG9zaXRvcnkzNDMyMjY2",
+      "name": "kotlin",
+      "full_name": "JetBrains/kotlin",
+      "private": false,
+      "owner": {
+        "login": "JetBrains",
+        "avatar_url": "https://avatars.githubusercontent.com/u/878437?v=4",
+      },
+      "forks": 5451,
+      "score": 1.0
+    }
+  ]
+}
