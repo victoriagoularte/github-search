@@ -21,23 +21,10 @@ fun MockWebServer.enqueueResponse(fileName: String? = null, code: Int) {
     }
 }
 
-fun MockWebServer.enqueueResponseError(code: Int) {
-    javaClass.classLoader?.let {
-        this.dispatcher = object : Dispatcher() {
-            override fun dispatch(request: RecordedRequest): MockResponse {
-                return MockResponse()
-                    .setHttp2ErrorCode(code)
-            }
-        }
-    }
-}
-
 fun dispatchRequest(requestMock: RequestMock.() -> Unit): RequestMock {
     return RequestMock().apply(requestMock)
 }
 
 infix fun Int.with(path: String) = RequestMock(code = this, path = path)
-
-infix fun Int.startOn(mockWebServer: MockWebServer) = mockWebServer.enqueueResponseError(code = this)
 
 infix fun RequestMock.startOn(mockWebServer: MockWebServer) = mockWebServer.enqueueResponse(path, code)

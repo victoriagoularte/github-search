@@ -1,4 +1,4 @@
-package com.viclab.repository
+package com.viclab.repository.mock
 
 import com.viclab.repository.model.response.OwnerResponse
 import com.viclab.repository.model.response.RepositoryListResponse

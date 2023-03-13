@@ -1,9 +1,12 @@
 package com.viclab.core.test.mockwebserver
 
+import com.viclab.core.BuildConfig
 import com.viclab.core.network.di.NetworkModule
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MockWebServerTestRule : TestWatcher() {
 
@@ -18,10 +21,8 @@ class MockWebServerTestRule : TestWatcher() {
         server.shutdown()
     }
 
-    fun providesRetrofit() = NetworkModule.provideRetrofit(
-        NetworkModule.providesOkHttpClient(
-            NetworkModule.providesHttpLoggingInterceptor(),
-            NetworkModule.providesDefaultInterceptorQueryParameter()
-        )
-    )
+    fun providesRetrofit(): Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(baseUrl)
+        .build()
 }
