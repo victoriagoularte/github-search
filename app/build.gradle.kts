@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.viclab.githubsearch"
+    namespace = "com.viclab.financialplanning"
     compileSdk = 33
 
     defaultConfig {
@@ -26,8 +26,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
 
@@ -58,23 +58,21 @@ android {
 
     packagingOptions {
         packagingOptions.resources.excludes += setOf(
-                "META-INF/*.version",
-                "META-INF/gradle/*",
-                "META-INF/gradle/*.processors",
-                "META-INF/proguard/*",
-                "/*.properties",
-                "fabric/*.properties",
-                "META-INF/*"
+            "META-INF/*.version",
+            "META-INF/gradle/*",
+            "META-INF/gradle/*.processors",
+            "META-INF/proguard/*",
+            "/*.properties",
+            "fabric/*.properties",
+            "META-INF/*"
         )
     }
 }
 
 dependencies {
-
     kapt(libs.hilt.compiler)
     implementation(libs.bundles.hilt)
-
-    implementation(libs.material)
+    implementation(libs.bundles.compose)
 
     with(libs.androidx) {
         implementation(appcompat)

@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 rootProject.name = "githubsearch"
 include ':app'
 include ':core'
-include ':data'
 include ':data:repository'
 include ':model'
 include ':domain'
+include ':ui'
