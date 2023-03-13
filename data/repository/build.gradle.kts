@@ -14,8 +14,6 @@ dependencies {
 
     with(libs.androidx) {
         implementation(core.ktx)
-        implementation(lifecycle.viewmodel)
-        implementation(lifecycle.viewmodel.ktx)
     }
 
     testImplementation(libs.bundles.test)
