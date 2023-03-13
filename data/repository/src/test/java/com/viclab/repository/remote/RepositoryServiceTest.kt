@@ -4,6 +4,7 @@ import com.viclab.core.test.extension.dispatchRequest
 import com.viclab.core.test.extension.startOn
 import com.viclab.core.test.extension.with
 import com.viclab.core.test.mockwebserver.MockWebServerTestRule
+import com.viclab.repository.remote.RepositoryService
 import com.viclab.repository.mock.MockResponse
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule

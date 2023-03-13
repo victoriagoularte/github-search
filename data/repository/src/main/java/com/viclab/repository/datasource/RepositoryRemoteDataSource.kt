@@ -1,4 +1,4 @@
-package com.viclab.datasource
+package com.viclab.repository.datasource
 
 import com.viclab.repository.model.response.RepositoryListResponse
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.viclab.di
+package com.viclab.repository.di
 
 import com.viclab.repository.remote.RepositoryService
 import dagger.Module

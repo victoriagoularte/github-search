@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":model"))
     implementation(libs.bundles.network)
 
     with(libs.androidx) {
