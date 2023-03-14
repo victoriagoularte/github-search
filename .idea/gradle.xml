@@ -29,6 +29,10 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/data/repository" />
             <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/mylibrary" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/repository" />
             <option value="$PROJECT_DIR$/model" />
             <option value="$PROJECT_DIR$/ui" />
           </set>
