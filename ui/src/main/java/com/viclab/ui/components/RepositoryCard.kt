@@ -17,14 +17,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.viclab.ui.theme.GithubSearchTheme
 
 @Composable
 fun RepositoryCard(
@@ -35,12 +34,9 @@ fun RepositoryCard(
     forks: Int,
     modifier: Modifier = Modifier
 ) {
-    val matrix = ColorMatrix()
-    matrix.setToSaturation(0F)
-
     Column(modifier = modifier
         .fillMaxWidth()
-        .background(color = MaterialTheme.colorScheme.surface)
+        .background(color = MaterialTheme.colorScheme.surface),
     ) {
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -54,12 +50,11 @@ fun RepositoryCard(
                     .build(),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(32.dp)
-                    .clip(CircleShape),
-                colorFilter = ColorFilter.colorMatrix(matrix)
+                modifier = Modifier.clip(CircleShape).size(32.dp)
             )
-            Text(modifier = Modifier.padding(start = 16.dp).fillMaxWidth(),
+            Text(modifier = Modifier
+                .padding(start = 16.dp)
+                .fillMaxWidth(),
                 text = "${login}/${name}")
         }
         Row(modifier = Modifier
@@ -85,5 +80,7 @@ fun RepositoryCard(
 @Preview(name = "RepositoryCard")
 @Composable
 private fun PreviewRepositoryCard() {
-    RepositoryCard("Teste", "Teste", "Teste", 1f, 1000)
+    GithubSearchTheme {
+        RepositoryCard("Teste", "Teste", "Teste", 1f, 1000)
+    }
 }

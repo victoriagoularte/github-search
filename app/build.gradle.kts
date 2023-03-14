@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.viclab.financialplanning"
+    namespace = "com.viclab.githubsearch"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.viclab.financialplanning"
+        applicationId = "com.viclab.githubsearch"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -70,6 +70,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui"))
+
     kapt(libs.hilt.compiler)
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.compose)

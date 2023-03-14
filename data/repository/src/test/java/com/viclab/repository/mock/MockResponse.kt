@@ -13,7 +13,7 @@ object MockResponse {
     )
 
     fun fakeRepositoryResponse() = RepositoryResponse(
-        name = "JetBrains/kotlin",
+        name = "kotlin",
         score = 1.0f,
         forks = 5451,
         owner =  fakeOwnerReponse()
