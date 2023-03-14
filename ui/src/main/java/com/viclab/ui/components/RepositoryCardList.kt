@@ -1,11 +1,12 @@
 package com.viclab.ui.components
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
@@ -25,15 +26,22 @@ fun RepositoryCardList(
 ) {
     LazyColumn(
         modifier = modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
             .padding(16.dp)
             .border(
-                BorderStroke(width = 2.dp, color = MaterialTheme.colorScheme.secondary),
+                BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary),
                 shape = RoundedCornerShape(15.dp)
             )
     ) {
-        items(repositoryList.repositoryList) {repository ->
-            RepositoryCard(login = repository.name, stars = repository.score, forks = repository.forks)
-            Divider(color = MaterialTheme.colorScheme.secondary, thickness = 2.dp)
+        itemsIndexed(repositoryList.repositoryList) {index, repository ->
+            RepositoryCard(
+                name = repository.name,
+                login = repository.owner.login,
+                avatarUrl = repository.owner.avatarUrl,
+                stars = repository.score,
+                forks = repository.forks)
+            if(index != repositoryList.repositoryList.lastIndex) Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
         }
     }
 }
@@ -49,7 +57,7 @@ private fun PreviewRepositoryCardList() {
 fun getRepositoryList() = RepositoryList(
     repositoryList = listOf(
         Repository(
-            name = "vic/githubsearch",
+            name = "githubsearch",
             score = 5f,
             forks = 129,
             owner = Owner(
@@ -58,7 +66,7 @@ fun getRepositoryList() = RepositoryList(
             )
         ),
         Repository(
-            name = "vic/githubsearch",
+            name = "githubsearch",
             score = 5f,
             forks = 129,
             owner = Owner(
@@ -67,7 +75,7 @@ fun getRepositoryList() = RepositoryList(
             )
         ),
         Repository(
-            name = "vic/githubsearch",
+            name = "githubsearch",
             score = 5f,
             forks = 129,
             owner = Owner(
@@ -76,7 +84,7 @@ fun getRepositoryList() = RepositoryList(
             )
         ),
         Repository(
-            name = "vic/githubsearch",
+            name = "githubsearch",
             score = 5f,
             forks = 129,
             owner = Owner(

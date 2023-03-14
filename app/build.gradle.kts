@@ -71,6 +71,7 @@ android {
 
 dependencies {
     implementation(project(":ui"))
+    implementation(project(":model"))
 
     kapt(libs.hilt.compiler)
     implementation(libs.bundles.hilt)

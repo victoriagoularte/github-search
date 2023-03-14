@@ -27,9 +27,9 @@ import com.viclab.ui.theme.GithubSearchTheme
 
 @Composable
 fun RepositoryCard(
-    name: String = "",
+    name: String,
     login: String,
-    avatarUrl: String = "https://avatars.githubusercontent.com/u/878437?v=4",
+    avatarUrl: String,
     stars: Float,
     forks: Int,
     modifier: Modifier = Modifier
