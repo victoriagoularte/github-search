@@ -14,7 +14,9 @@ import com.viclab.githubsearch.navigation.MainNavHost
 import com.viclab.ui.components.RepositoryCardList
 import com.viclab.ui.components.getRepositoryList
 import com.viclab.ui.theme.GithubSearchTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

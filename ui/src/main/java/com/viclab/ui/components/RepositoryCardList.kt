@@ -6,22 +6,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.items
 import com.viclab.model.repository.Owner
 import com.viclab.model.repository.Repository
 import com.viclab.model.repository.RepositoryList
-import com.viclab.ui.theme.GithubSearchTheme
 
 @Composable
 fun RepositoryCardList(
-    repositoryList: RepositoryList,
+    repositoryList: LazyPagingItems<Repository>,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -34,25 +33,27 @@ fun RepositoryCardList(
                 shape = RoundedCornerShape(15.dp)
             )
     ) {
-        itemsIndexed(repositoryList.repositoryList) {index, repository ->
-            RepositoryCard(
-                name = repository.name,
-                login = repository.owner.login,
-                avatarUrl = repository.owner.avatarUrl,
-                stars = repository.score,
-                forks = repository.forks)
-            if(index != repositoryList.repositoryList.lastIndex) Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
+        items(repositoryList) { repository ->
+            repository?.let {
+                RepositoryCard(
+                    name = repository.name,
+                    login = repository.owner.login,
+                    avatarUrl = repository.owner.avatarUrl,
+                    stars = repository.score,
+                    forks = repository.forks)
+                Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
+            }
         }
     }
 }
 
-@Preview(name = "RepositoryCardList")
-@Composable
-private fun PreviewRepositoryCardList() {
-    GithubSearchTheme {
-        RepositoryCardList(getRepositoryList())
-    }
-}
+//@Preview(name = "RepositoryCardList")
+//@Composable
+//private fun PreviewRepositoryCardList() {
+//    GithubSearchTheme {
+//        RepositoryCardList(getRepositoryList())
+//    }
+//}
 
 fun getRepositoryList() = RepositoryList(
     repositoryList = listOf(

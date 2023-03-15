@@ -64,7 +64,7 @@ android {
             "META-INF/proguard/*",
             "/*.properties",
             "fabric/*.properties",
-            "META-INF/*"
+            "META-INF/*",
         )
     }
 }

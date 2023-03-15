@@ -14,6 +14,7 @@ dependencies {
 
     with(libs.androidx) {
         implementation(core.ktx)
+        implementation(paging.common)
     }
 
     testImplementation(libs.bundles.test)

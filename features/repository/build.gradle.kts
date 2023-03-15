@@ -13,5 +13,7 @@ dependencies {
     with(libs.androidx) {
         implementation(core.ktx)
         implementation(paging.compose)
+        implementation(paging.runtime)
+        implementation(paging.common)
     }
 }

@@ -33,8 +33,9 @@ mockwebserverVersion = "4.9.1"
 turbine = "0.12.1"
 coroutinesTest = "1.5.1"
 mockkVersion = "1.11.0"
-pagingComposeVersion = "1.0.0-alpha02"
+pagingComposeVersion = "1.0.0-alpha17"
 pagingCommonVersion = "3.1.1"
+pagingRuntimeVersion = "3.1.1"
 coilVersion = "2.2.2"
 
 [libraries]
@@ -72,6 +73,7 @@ androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "life
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxComposeLifecycle" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingComposeVersion"}
 androidx-paging-common = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "pagingCommonVersion"}
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagingRuntimeVersion"}
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
