@@ -1,4 +1,4 @@
-package com.viclab.domain.usecase
+package com.viclab.repository.usecase
 
 import com.viclab.repository.repository.RepoRepository
 import javax.inject.Inject
