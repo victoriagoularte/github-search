@@ -1,14 +1,12 @@
 package com.viclab.repository.usecase
 
-import app.cash.turbine.test
 import com.viclab.repository.MockResponse
 import com.viclab.repository.repository.RepoRepository
-import io.mockk.every
+import io.mockk.coEvery
 import io.mockk.mockk
-import io.mockk.verify
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertThrows
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -22,33 +20,29 @@ internal class RepositoryListUseCaseTest {
     @Test
     fun `invoke should return RepositoryList from repository when returns success`() = runTest {
         // Given
-        val expected = MockResponse.fakeRepositoryList()
-        every { repository.repositories(any(), any(), any(), any()) } returns flowOf(expected)
+        val expected = MockResponse.fakeRepositoryList().repositoryList
+        coEvery { repository.repositories(any(), any(), any(), any()) } returns expected
 
         // When
-        val result = useCase("kotlin", "stars", 1, 1)
+        val result = useCase("kotlin", "stars", 1, 10)
 
         // Then
-        result.test {
-            verify(exactly = ONCE) { useCase(any(), any(), any(), any()) }
-            assertEquals(expected, awaitItem())
-            awaitComplete()
-        }
+        assertEquals(expected, result)
+
     }
 
     @Test
     fun `invoke should throws exception from repository when returns error`() = runTest {
         // Given
-        val error = Exception()
-        every { repository.repositories(any(), any(), any(), any()) } returns flow { throw error }
+        val error = Throwable()
+        coEvery { repository.repositories(any(), any(), any(), any()) } throws error
 
-        // When
-        val result = useCase("kotlin", "stars", 1, 1)
 
         // Then
-        result.test {
-            verify(exactly = ONCE) { useCase(any(), any(), any(), any()) }
-            awaitError()
+        assertThrows(Throwable::class.java) {
+            runBlocking {
+                useCase("kotlin", "stars", 1, 10)
+            }
         }
     }
 }

@@ -9,12 +9,11 @@ import javax.inject.Inject
 internal class RepositoryRemoteDataSourceImpl @Inject constructor(private val service: RepositoryService)
     : RepositoryRemoteDataSource {
 
-    override fun repositories(
+    override suspend fun repositories(
         language: String,
         sort: String,
         page: Int,
         perPage: Int
-    ): Flow<RepositoryListResponse> = flow {
-        emit(service.repositories(language, sort, page, perPage))
-    }
+    ) = service.repositories(language, sort, page, perPage)
+
 }

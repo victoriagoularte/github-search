@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepoRepository {
 
-    fun repositories(language: String, sort: String, page: Int, perPage: Int) :Flow<PagingData<Repository>>
+    suspend fun repositories(language: String, sort: String, page: Int, perPage: Int) : List<Repository>
 }

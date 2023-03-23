@@ -16,4 +16,6 @@ dependencies {
         implementation(paging.runtime)
         implementation(paging.common)
     }
+
+    testImplementation(libs.bundles.test)
 }

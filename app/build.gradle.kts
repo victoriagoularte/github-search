@@ -84,4 +84,6 @@ dependencies {
         implementation(core.ktx)
         implementation(work.runtime)
     }
+
+    testImplementation(libs.bundles.test)
 }

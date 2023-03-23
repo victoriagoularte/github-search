@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepositoryRemoteDataSource {
 
-    fun repositories(language: String, sort: String, page: Int, perPage: Int) : Flow<RepositoryListResponse>
+    suspend fun repositories(language: String, sort: String, page: Int, perPage: Int) : RepositoryListResponse
 }
