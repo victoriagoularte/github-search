@@ -64,13 +64,13 @@ fun RepositoryCard(
             Row(modifier = Modifier,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(imageVector = Icons.Default.Star, contentDescription = "Estrela")
+                Icon(imageVector = Icons.Default.Star, contentDescription = "Estrelas")
                 Text(text = stars.toInt().toString(), modifier = Modifier.padding(start = 8.dp))
             }
             Row(modifier = Modifier.padding(start = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(imageVector = Icons.Default.ForkLeft, contentDescription = "Estrela")
+                Icon(imageVector = Icons.Default.ForkLeft, contentDescription = "Forks")
                 Text(text = forks.toString(), modifier = Modifier.padding(start = 4.dp))
             }
         }

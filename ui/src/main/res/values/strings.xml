@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_message">Algo deu errado. Por favor, tente novamente.</string>
+    <string name="loading_message">Por favor, aguarde...</string>
+    <string name="loading_pagination_message">Carregando mais itens...</string>
+</resources>

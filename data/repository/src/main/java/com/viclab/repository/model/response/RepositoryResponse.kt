@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class RepositoryResponse(
     @SerializedName("name")
     val name: String,
-    @SerializedName("score")
+    @SerializedName("stargazers_count")
     val score: Float,
     @SerializedName("forks")
     val forks: Int,

@@ -1,22 +1,29 @@
 package com.viclab.ui.components
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.viclab.model.repository.Owner
 import com.viclab.model.repository.Repository
 import com.viclab.model.repository.RepositoryList
+import com.viclab.ui.R
+import com.viclab.ui.theme.GithubSearchTheme
 
 @Composable
 fun RepositoryCardList(
@@ -28,10 +35,6 @@ fun RepositoryCardList(
             .wrapContentHeight()
             .fillMaxWidth()
             .padding(16.dp)
-            .border(
-                BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary),
-                shape = RoundedCornerShape(15.dp)
-            )
     ) {
         items(repositoryList) { repository ->
             repository?.let {
@@ -44,16 +47,71 @@ fun RepositoryCardList(
                 Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
             }
         }
+
+        when(repositoryList.loadState.refresh) {
+            is LoadState.Error -> {
+                item {
+                    Text(
+                        text = stringResource(R.string.error_message),
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier
+                            .padding(start = 16.dp)
+                            .fillParentMaxSize(),
+                    )
+                }
+            }
+            is LoadState.Loading -> {
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillParentMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                    ) {
+                        Text(
+                            modifier = Modifier
+                                .padding(8.dp),
+                            text = stringResource(R.string.loading_message)
+                        )
+
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    }
+                }
+            }
+            else -> {}
+        }
+
+        when (val state = repositoryList.loadState.append) { // Pagination
+            is LoadState.Error -> {
+                //TODO Pagination Error Item
+                //state.error to get error message
+            }
+            is LoadState.Loading -> { // Pagination Loading UI
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                    ) {
+                        Text(text = stringResource(R.string.loading_pagination_message))
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    }
+                }
+            }
+            else -> {}
+        }
     }
 }
 
-//@Preview(name = "RepositoryCardList")
-//@Composable
-//private fun PreviewRepositoryCardList() {
-//    GithubSearchTheme {
-//        RepositoryCardList(getRepositoryList())
-//    }
-//}
+@Preview
+@Composable
+fun RepositoryCardListPreview() {
+    GithubSearchTheme() {
+
+//        RepositoryCardList(repositoryList = getRepositoryList())
+    }
+}
 
 fun getRepositoryList() = RepositoryList(
     repositoryList = listOf(

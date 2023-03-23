@@ -13,10 +13,8 @@ object FeatureModule {
 
     @Provides
     fun provideRepositoriesPagingSource(
-        language: String,
-        sort: String,
         useCase: RepositoryListUseCase
     ) : RepositoriesPagingSource {
-        return RepositoriesPagingSource(language, sort, useCase)
+        return RepositoriesPagingSource(useCase)
     }
 }

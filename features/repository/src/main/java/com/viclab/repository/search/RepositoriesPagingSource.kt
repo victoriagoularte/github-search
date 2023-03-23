@@ -5,17 +5,17 @@ import androidx.paging.PagingState
 import com.viclab.model.repository.Repository
 import com.viclab.repository.usecase.RepositoryListUseCase
 import javax.inject.Inject
-import javax.inject.Named
 
 private const val FIRST_PAGE_INDEX = 1
 private const val ONE = 1
 const val ITEMS_PER_PAGE = 15
 
 class RepositoriesPagingSource @Inject constructor(
-    @Named("language") var language: String,
-    @Named("sort") var sort: String,
     private val useCase: RepositoryListUseCase
 ) : PagingSource<Int, Repository>() {
+
+    var language = "kotlin"
+    var sort = "stars"
 
     override fun getRefreshKey(state: PagingState<Int, Repository>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -38,5 +38,4 @@ class RepositoriesPagingSource @Inject constructor(
             LoadResult.Error(e)
         }
     }
-
 }
