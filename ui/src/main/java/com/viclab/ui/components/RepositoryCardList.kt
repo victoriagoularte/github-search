@@ -1,7 +1,10 @@
 package com.viclab.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -39,11 +42,11 @@ fun RepositoryCardList(
         items(repositoryList) { repository ->
             repository?.let {
                 RepositoryCard(
-                    name = repository.name,
-                    login = repository.owner.login,
-                    avatarUrl = repository.owner.avatarUrl,
-                    stars = repository.score,
-                    forks = repository.forks)
+                    name = it.name,
+                    login = it.owner.login,
+                    avatarUrl = it.owner.avatarUrl,
+                    stars = it.score,
+                    forks = it.forks)
                 Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
             }
         }
@@ -51,14 +54,19 @@ fun RepositoryCardList(
         when(repositoryList.loadState.refresh) {
             is LoadState.Error -> {
                 item {
-                    Text(
-                        text = stringResource(R.string.error_message),
-                        color = MaterialTheme.colorScheme.error,
+                    Box(
                         modifier = Modifier
-                            .padding(start = 16.dp)
-                            .fillParentMaxSize(),
-                    )
+                            .fillMaxSize()
+                            .background(color = MaterialTheme.colorScheme.background),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(R.string.error_message),
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
                 }
+
             }
             is LoadState.Loading -> {
                 item {
@@ -83,8 +91,19 @@ fun RepositoryCardList(
 
         when (val state = repositoryList.loadState.append) { // Pagination
             is LoadState.Error -> {
-                //TODO Pagination Error Item
-                //state.error to get error message
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(color = MaterialTheme.colorScheme.background),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(R.string.error_message),
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                }
             }
             is LoadState.Loading -> { // Pagination Loading UI
                 item {
