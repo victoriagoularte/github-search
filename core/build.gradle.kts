@@ -21,5 +21,6 @@ dependencies {
         implementation(core.ktx)
         implementation(lifecycle.viewmodel)
         implementation(lifecycle.viewmodel.ktx)
+        implementation(test.runner)
     }
 }

@@ -30,7 +30,7 @@ fun RepositoryCard(
     name: String,
     login: String,
     avatarUrl: String,
-    stars: Float,
+    stars: Int,
     forks: Int,
     modifier: Modifier = Modifier
 ) {
@@ -65,7 +65,7 @@ fun RepositoryCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(imageVector = Icons.Default.Star, contentDescription = "Estrelas")
-                Text(text = stars.toInt().toString(), modifier = Modifier.padding(start = 8.dp))
+                Text(text = stars.toString(), modifier = Modifier.padding(start = 8.dp))
             }
             Row(modifier = Modifier.padding(start = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
@@ -81,6 +81,6 @@ fun RepositoryCard(
 @Composable
 private fun PreviewRepositoryCard() {
     GithubSearchTheme {
-        RepositoryCard("Teste", "Teste", "Teste", 1f, 1000)
+        RepositoryCard("Teste", "Teste", "Teste", 1000, 1000)
     }
 }

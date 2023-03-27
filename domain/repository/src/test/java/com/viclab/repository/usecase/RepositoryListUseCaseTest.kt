@@ -1,6 +1,6 @@
 package com.viclab.repository.usecase
 
-import com.viclab.repository.MockResponse
+import com.viclab.repository.MockResult
 import com.viclab.repository.repository.RepoRepository
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -20,7 +20,7 @@ internal class RepositoryListUseCaseTest {
     @Test
     fun `invoke should return RepositoryList from repository when returns success`() = runTest {
         // Given
-        val expected = MockResponse.fakeRepositoryList().repositoryList
+        val expected = MockResult.fakeRepositoryList().repositoryList
         coEvery { repository.repositories(any(), any(), any(), any()) } returns expected
 
         // When

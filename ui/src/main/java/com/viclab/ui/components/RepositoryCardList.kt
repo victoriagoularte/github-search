@@ -136,7 +136,7 @@ fun getRepositoryList() = RepositoryList(
     repositoryList = listOf(
         Repository(
             name = "githubsearch",
-            score = 5f,
+            score = 5123,
             forks = 129,
             owner = Owner(
                 login = "vicgoularte",
@@ -145,7 +145,7 @@ fun getRepositoryList() = RepositoryList(
         ),
         Repository(
             name = "githubsearch",
-            score = 5f,
+            score = 512,
             forks = 129,
             owner = Owner(
                 login = "vicgoularte",
@@ -154,7 +154,7 @@ fun getRepositoryList() = RepositoryList(
         ),
         Repository(
             name = "githubsearch",
-            score = 5f,
+            score = 500,
             forks = 129,
             owner = Owner(
                 login = "vicgoularte",
@@ -163,7 +163,7 @@ fun getRepositoryList() = RepositoryList(
         ),
         Repository(
             name = "githubsearch",
-            score = 5f,
+            score = 500,
             forks = 129,
             owner = Owner(
                 login = "vicgoularte",

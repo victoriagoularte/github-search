@@ -6,7 +6,7 @@ data class RepositoryResponse(
     @SerializedName("name")
     val name: String,
     @SerializedName("stargazers_count")
-    val score: Float,
+    val score: Int,
     @SerializedName("forks")
     val forks: Int,
     @SerializedName("owner")

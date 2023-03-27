@@ -1,4 +1,3 @@
-
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -20,7 +19,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             }
             extensions.configure<LibraryExtension> {
                 defaultConfig {
-                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                    testInstrumentationRunner = "com.viclab.core.test.GithubSearchTestRunner"
                 }
             }
 
@@ -31,6 +30,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
                 add("testImplementation", kotlin("test"))
                 add("androidTestImplementation", kotlin("test"))
+                add("androidTestImplementation", project(":core"))
 
 //                add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())

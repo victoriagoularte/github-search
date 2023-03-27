@@ -3,11 +3,8 @@ package com.viclab.repository
 import com.viclab.model.repository.Owner
 import com.viclab.model.repository.Repository
 import com.viclab.model.repository.RepositoryList
-import com.viclab.repository.model.response.OwnerResponse
-import com.viclab.repository.model.response.RepositoryListResponse
-import com.viclab.repository.model.response.RepositoryResponse
 
-object MockResponse {
+object MockResult {
 
     fun fakeRepositoryList() = RepositoryList(
         repositoryList = listOf(
@@ -17,7 +14,7 @@ object MockResponse {
 
     fun fakeRepository() = Repository(
         name = "kotlin",
-        score = 1.0f,
+        score = 1345,
         forks = 5451,
         owner =  fakeOwner()
     )
