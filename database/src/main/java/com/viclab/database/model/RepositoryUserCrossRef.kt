@@ -28,7 +28,7 @@ import androidx.room.Index
 )
 
 data class RepositoryUserCrossRef(
-    @ColumnInfo(name = "news_resource_id")
+    @ColumnInfo(name = "repository_id")
     val repositoryId: Long,
     @ColumnInfo(name = "topic_id")
     val userId: Long,
