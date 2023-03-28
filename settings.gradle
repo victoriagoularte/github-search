@@ -21,5 +21,4 @@ include ':model'
 include ':features:repository'
 include ':domain', ':domain:repository'
 include ':data:repository'
-include ':database:user', ':database:repository'
-
+include ':database'

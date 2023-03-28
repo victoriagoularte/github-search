@@ -1,4 +1,4 @@
-package com.viclab.user
+package com.viclab.database
 
 import org.junit.Test
 

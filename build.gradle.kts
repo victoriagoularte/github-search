@@ -6,6 +6,6 @@ plugins {
         alias(kotlin.jvm) apply false
         alias(kotlin.android) apply false
         alias(kotlin.serialization) apply false
-        alias(libs.plugins.secrets) apply false
+        alias(secrets) apply false
     }
 }

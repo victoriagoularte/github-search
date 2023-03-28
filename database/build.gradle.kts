@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.viclab.database.repository"
+    namespace = "com.viclab.database"
 }
 
 dependencies {
