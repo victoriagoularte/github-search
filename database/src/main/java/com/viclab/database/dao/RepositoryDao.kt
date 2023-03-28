@@ -8,6 +8,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import com.viclab.database.model.RepositoryEntity
+import com.viclab.database.model.RepositoryWithUser
 
 @Dao
 interface RepositoryDao {
@@ -16,10 +17,11 @@ interface RepositoryDao {
     @Query(
         value = """
             SELECT * FROM repository
+            WHERE id = :repositoryId"
             ORDER BY stars DESC
     """
     )
-    fun getRepositoryList(): List<RepositoryEntity>
+    suspend fun getRepositoryList(repositoryId: Long): List<RepositoryWithUser>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(account: RepositoryEntity)
