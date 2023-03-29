@@ -128,47 +128,5 @@ fun RepositoryCardList(
 fun RepositoryCardListPreview() {
     GithubSearchTheme() {
 
-//        RepositoryCardList(repositoryList = getRepositoryList())
     }
 }
-
-fun getRepositoryList() = RepositoryList(
-    repositoryList = listOf(
-        Repository(
-            name = "githubsearch",
-            score = 5123,
-            forks = 129,
-            owner = Owner(
-                login = "vicgoularte",
-                avatarUrl = "https://avatars.githubusercontent.com/u/878437?v=4"
-            )
-        ),
-        Repository(
-            name = "githubsearch",
-            score = 512,
-            forks = 129,
-            owner = Owner(
-                login = "vicgoularte",
-                avatarUrl = "https://avatars.githubusercontent.com/u/878437?v=4"
-            )
-        ),
-        Repository(
-            name = "githubsearch",
-            score = 500,
-            forks = 129,
-            owner = Owner(
-                login = "vicgoularte",
-                avatarUrl = "https://avatars.githubusercontent.com/u/878437?v=4"
-            )
-        ),
-        Repository(
-            name = "githubsearch",
-            score = 500,
-            forks = 129,
-            owner = Owner(
-                login = "vicgoularte",
-                avatarUrl = "https://avatars.githubusercontent.com/u/878437?v=4"
-            )
-        )
-    )
-)

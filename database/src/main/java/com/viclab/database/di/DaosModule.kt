@@ -1,8 +1,8 @@
 package com.viclab.database.di
 
 import com.viclab.database.GithubSearchDatabase
+import com.viclab.database.dao.RemoteKeysDao
 import com.viclab.database.dao.RepositoryDao
-import com.viclab.database.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +18,7 @@ object DaosModule {
     ): RepositoryDao = database.repositoryDao()
 
     @Provides
-    fun providesUserDao(
+    fun providesRemoteKeysDao(
         database: GithubSearchDatabase,
-    ): UserDao = database.userDao()
+    ): RemoteKeysDao = database.remoteKeysDao()
 }

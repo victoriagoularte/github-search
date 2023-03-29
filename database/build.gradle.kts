@@ -1,6 +1,7 @@
 plugins {
     id("com.viclab.library")
     id("com.viclab.hilt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -9,13 +10,15 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation("com.google.firebase:firebase-firestore-ktx:24.4.2")
+    implementation(project(":model"))
 
     with(libs.androidx) {
         implementation(core.ktx)
-        implementation(room.compiler)
-        implementation(room.runtime)
+        implementation(paging.common)
     }
+
+    implementation(libs.bundles.room)
+    ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.bundles.test)
 }

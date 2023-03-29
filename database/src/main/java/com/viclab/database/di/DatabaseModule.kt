@@ -13,13 +13,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-    @Provides
+
     @Singleton
+    @Provides
     fun providesGithubSearchDatabase(
         @ApplicationContext context: Context,
     ): GithubSearchDatabase = Room.databaseBuilder(
         context,
         GithubSearchDatabase::class.java,
         "githubsearch-database"
-    ).build()
+    ).fallbackToDestructiveMigration().build()
 }
