@@ -16,6 +16,9 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 const val ITEMS_PER_PAGE = 15
+private const val ONE_PAGE = 1
+private const val ONE_KEY = 1
+private const val SOURCE_DURATION = 1L
 
 @OptIn(ExperimentalPagingApi::class)
 class PageRepositoryRemoteMediator (
@@ -23,12 +26,11 @@ class PageRepositoryRemoteMediator (
     private val database: GithubSearchDatabase,
 ): RemoteMediator<Int, RepositoryEntity>() {
 
-    var language = "kotlin"
-    var sort = "stars"
+    var language = ""
+    var sort = ""
 
     override suspend fun initialize(): InitializeAction {
-
-        val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
+        val cacheTimeout = TimeUnit.MILLISECONDS.convert(SOURCE_DURATION, TimeUnit.HOURS)
 
         return if (System.currentTimeMillis() - (database.remoteKeysDao().getCreationTime() ?: 0) < cacheTimeout) {
             InitializeAction.SKIP_INITIAL_REFRESH
@@ -68,7 +70,7 @@ class PageRepositoryRemoteMediator (
         val page: Int = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                remoteKeys?.nextKey?.minus(1) ?: 1
+                remoteKeys?.nextKey?.minus(ONE_KEY) ?: ONE_KEY
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getRemoteKeyForFirstItem(state)
@@ -84,9 +86,7 @@ class PageRepositoryRemoteMediator (
 
         try {
             val apiResponse = remoteDataSource.repositories(language = language, sort = sort, page = page, ITEMS_PER_PAGE)
-
-            delay(1000L) //TODO For testing only!
-
+//            delay(1000L)
             val repositories = apiResponse.repositoryList
             val endOfPaginationReached = repositories.isEmpty()
 
@@ -95,8 +95,8 @@ class PageRepositoryRemoteMediator (
                     database.remoteKeysDao().clearRemoteKeys()
                     database.repositoryDao().clearRepositories()
                 }
-                val prevKey = if (page > 1) page - 1 else null
-                val nextKey = if (endOfPaginationReached) null else page + 1
+                val prevKey = if (page > ONE_PAGE) page - ONE_PAGE else null
+                val nextKey = if (endOfPaginationReached) null else page + ONE_PAGE
                 val remoteKeys = repositories.map {
                     RemoteKeysEntity(repositoryId = it.id, prevKey = prevKey, currentPage = page, nextKey = nextKey)
                 }

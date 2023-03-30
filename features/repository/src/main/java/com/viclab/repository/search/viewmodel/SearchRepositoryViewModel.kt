@@ -19,6 +19,6 @@ class SearchRepositoryViewModel @Inject constructor(
 ): ViewModel() {
 
     fun repositories() =
-        useCase("kotlin", "stars").flowOn(dispatcher).stateIn(viewModelScope, SharingStarted.Eagerly, PagingData.empty())
+        useCase("java", "stars").flowOn(dispatcher).stateIn(viewModelScope, SharingStarted.Eagerly, PagingData.empty())
 
 }
