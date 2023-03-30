@@ -19,6 +19,8 @@ Project to explore Android features.
 - Compose Navigation
 - Coil
 - Clean Architecture
+- Remote Mediator
+- Room
 
 ## Architecture
 
