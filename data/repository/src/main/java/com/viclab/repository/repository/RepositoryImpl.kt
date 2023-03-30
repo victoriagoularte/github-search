@@ -34,6 +34,9 @@ internal class RepositoryImpl @Inject constructor(
             remoteMediator = PageRepositoryRemoteMediator(
                 remoteDataSource,
                 localDataSource,
-            )
+            ).apply {
+                this.language = language
+                this.sort = sort
+            }
         ).flow.map { pagingData -> pagingData.map { it.asRepository() } }
 }
