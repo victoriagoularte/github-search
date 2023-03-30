@@ -1,6 +1,6 @@
 package com.viclab.repository.repository
 
-import com.viclab.repository.datasource.RepositoryRemoteDataSource
+import com.viclab.repository.datasource.remote.RepositoryRemoteDataSource
 import com.viclab.repository.mock.MockResponse
 import com.viclab.repository.model.mapper.asRepository
 import com.viclab.repository.model.response.RepositoryResponse
@@ -15,7 +15,7 @@ import kotlin.test.assertEquals
 internal class RepoRepositoryImplTest {
 
     private val dataSource: RepositoryRemoteDataSource = mockk()
-    private val repository = RepoRepositoryImpl(dataSource)
+    private val repository = RepositoryImpl(dataSource)
 
     @Test
     fun `repositories should return repository list domain when RepositoryRemoteDataSource returns succeeded response`() = runTest {

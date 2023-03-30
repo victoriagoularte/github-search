@@ -11,8 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.viclab.githubsearch.navigation.MainNavHost
-import com.viclab.ui.components.RepositoryCardList
-import com.viclab.ui.components.getRepositoryList
 import com.viclab.ui.theme.GithubSearchTheme
 import dagger.hilt.android.AndroidEntryPoint
 

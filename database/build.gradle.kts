@@ -5,14 +5,12 @@ plugins {
 }
 
 android {
-    namespace = "com.viclab.data.repository"
+    namespace = "com.viclab.database"
 }
 
 dependencies {
     implementation(project(":core"))
     implementation(project(":model"))
-    implementation(project(":database"))
-    implementation(libs.bundles.network)
 
     with(libs.androidx) {
         implementation(core.ktx)
