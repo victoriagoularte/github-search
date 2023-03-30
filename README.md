@@ -39,5 +39,5 @@ Looking for low coupling and high cohesion as recommended [here](https://develop
 
 ## Next steps
 
-- cache of reposository list
+✅ cache of reposository list
 - Feature about Users
