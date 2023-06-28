@@ -3,18 +3,22 @@ package com.viclab.repository.search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.viclab.repository.search.viewmodel.SearchRepositoryViewModel
+import com.viclab.model.repository.Owner
+import com.viclab.model.repository.Repository
+import com.viclab.model.repository.RepositoryList
 import com.viclab.ui.components.RepositoryCardList
 import com.viclab.ui.theme.GithubSearchTheme
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun SearchScreen(
-    viewModel: SearchRepositoryViewModel = hiltViewModel(),
+    repositories: StateFlow<PagingData<Repository>>,
     modifier: Modifier = Modifier
 ) {
-    val repositories = viewModel.repositories().collectAsLazyPagingItems()
+    val repositories = repositories.collectAsLazyPagingItems()
     RepositoryCardList(repositoryList = repositories)
 }
 
@@ -22,6 +26,29 @@ fun SearchScreen(
 @Composable
 fun DefaultPreview() {
     GithubSearchTheme {
-        SearchScreen()
+        val repositories: StateFlow<PagingData<Repository>> =
+            MutableStateFlow(
+                PagingData.from(fakeRepositoryList().repositoryList)
+            )
+        SearchScreen(repositories)
     }
 }
+
+fun fakeRepositoryList() = RepositoryList(
+    repositoryList = listOf(
+        fakeRepository()
+    )
+)
+
+fun fakeRepository() = Repository(
+    id = 1,
+    name = "kotlin",
+    score = 1345,
+    forks = 5451,
+    owner =  fakeOwner()
+)
+
+fun fakeOwner() = Owner(
+    login = "JetBrains",
+    avatarUrl = "https://avatars.githubusercontent.com/u/878437?v=4"
+)

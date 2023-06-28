@@ -24,7 +24,7 @@ Project to explore Android features.
 
 ## Architecture
 
-Looking for low coupling and high cohesion as recommended [here](https://developer.android.com/topic/modularization/patterns). The architecture is grouped into modules by layer and feature.
+Looking for low coupling and high cohesion as recommended [here](https://developer.android.com/topic/modularization/patterns). The architecture is grouped into modules by layer and by feature.
 
 ### App modules
 

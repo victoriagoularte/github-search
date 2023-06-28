@@ -13,6 +13,7 @@ object MockResult {
     )
 
     fun fakeRepository() = Repository(
+        id = 1L,
         name = "kotlin",
         score = 1345,
         forks = 5451,
